@@ -2,10 +2,6 @@ package com.example.spring_boot_crud.Services;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,9 +20,10 @@ public class UserService {
         this.repository = repository;
     }
 
-    //create
+    //create a user 
     public void createUser(User user){
         Optional<User> existingUser = repository.findByEmail(user.getEmail());
+        //if some user with the same email already exists, throws an exception
         if (existingUser.isPresent()) {
             throw new UserAlreadyExistsException
                 ("User with email: "+ user.getEmail() + " already exists.");
@@ -35,11 +32,12 @@ public class UserService {
         repository.saveUser(user);
     }
 
-    //read
+    //read all the users
     public List<User> getAllUsers(){
         return repository.findAll().values().stream().toList();
     }
 
+    //read user searching by ID
     public User getUserById(Long id){
         Optional <User> user = repository.findById(id);
         if (user.isPresent()) {
@@ -49,6 +47,7 @@ public class UserService {
         }
     }
 
+    //read user searching by name
     public List<User> getUserByName(String name){
         List<User> users = repository.findByName(name);
         if (!users.isEmpty()) {
@@ -58,14 +57,16 @@ public class UserService {
         }
     }
 
-    //update
+    //update a user by his id
     public void updateUser(Long id, User updatedUser){
         Optional<User> existingUser = repository.findById(id);
-
+        //validate if user with specified id exists
         if(existingUser.isEmpty()) {
             throw new UserNotFoundException("User with ID: "+ id + " not found.");
         }
         
+        //Validates if the user modification violates the email constraint.
+        //If the email to be updated already exists, an exception will be thrown.
         Optional <User> userWithSameEmail = repository.findByEmail(updatedUser.getEmail());
         if(userWithSameEmail.isPresent() && userWithSameEmail.get().getId() != id){
             throw new UserAlreadyExistsException("Email: "+ id + " already in use");
@@ -73,10 +74,12 @@ public class UserService {
         updatedUser.setId(id);
         repository.updateUser(id, updatedUser);
     }
-    //delete
+    //delete user by ID
     public void deleteUser(Long id){
         Optional<User> existingUser = repository.findById(id);
 
+        //Checks if a user with the specified ID exists
+        //If not, an exception will be thrown
         if (existingUser.isEmpty()){
             throw new UserNotFoundException("User with ID: " +id + " not found.");
         }
