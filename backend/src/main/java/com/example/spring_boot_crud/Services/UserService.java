@@ -77,9 +77,7 @@ public class UserService {
     public void deleteUser(Long id){
         Optional<User> existingUser = repository.findById(id);
 
-        if (existingUser.isPresent()) {
-            repository.deleteById(id);
-        }else{
+        if (existingUser.isEmpty()){
             throw new UserNotFoundException("User with ID: " +id + " not found.");
         }
         repository.deleteById(id);
