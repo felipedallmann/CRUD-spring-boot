@@ -1,0 +1,8 @@
+C:\Users\terad\Documents\Projeto-CRUD\backend\src\main\java\com\example\spring_boot_crud\Controller\UserController.java
+C:\Users\terad\Documents\Projeto-CRUD\backend\src\main\java\com\example\spring_boot_crud\Entities\User.java
+C:\Users\terad\Documents\Projeto-CRUD\backend\src\main\java\com\example\spring_boot_crud\Exceptions\GlobalExceptionHandler.java
+C:\Users\terad\Documents\Projeto-CRUD\backend\src\main\java\com\example\spring_boot_crud\Exceptions\UserAlreadyExistsException.java
+C:\Users\terad\Documents\Projeto-CRUD\backend\src\main\java\com\example\spring_boot_crud\Exceptions\UserNotFoundException.java
+C:\Users\terad\Documents\Projeto-CRUD\backend\src\main\java\com\example\spring_boot_crud\Repository\UserRepository.java
+C:\Users\terad\Documents\Projeto-CRUD\backend\src\main\java\com\example\spring_boot_crud\Services\UserService.java
+C:\Users\terad\Documents\Projeto-CRUD\backend\src\main\java\com\example\spring_boot_crud\SpringBootCrudApplication.java
