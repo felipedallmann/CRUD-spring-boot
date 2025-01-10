@@ -69,7 +69,7 @@ public class UserService {
         //If the email to be updated already exists, an exception will be thrown.
         Optional <User> userWithSameEmail = repository.findByEmail(updatedUser.getEmail());
         if(userWithSameEmail.isPresent() && userWithSameEmail.get().getId() != id){
-            throw new UserAlreadyExistsException("Email: "+ id + " already in use");
+            throw new UserAlreadyExistsException("Email: "+ updatedUser.getEmail() + " already in use");
         }
         updatedUser.setId(id);
         repository.updateUser(id, updatedUser);
