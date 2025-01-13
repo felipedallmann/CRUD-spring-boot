@@ -2,6 +2,7 @@ package com.example.spring_boot_crud.Services;
 
 import java.util.List;
 import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,12 +30,12 @@ public class UserService {
                 ("User with email: "+ user.getEmail() + " already exists.");
         }
 
-        repository.saveUser(user);
+        repository.save(user);
     }
 
     //read all the users
     public List<User> getAllUsers(){
-        return repository.findAll().values().stream().toList();
+        return repository.findAll();
     }
 
     //read user searching by ID
@@ -49,7 +50,7 @@ public class UserService {
 
     //read user searching by name
     public List<User> getUserByName(String name){
-        List<User> users = repository.findByName(name);
+        List<User> users = repository.findByNameContainingIgnoreCase(name);
         if (!users.isEmpty()) {
             return users;
         }else{
@@ -72,7 +73,7 @@ public class UserService {
             throw new UserAlreadyExistsException("Email: "+ updatedUser.getEmail() + " already in use");
         }
         updatedUser.setId(id);
-        repository.updateUser(id, updatedUser);
+        repository.save(updatedUser);
     }
     //delete user by ID
     public void deleteUser(Long id){
