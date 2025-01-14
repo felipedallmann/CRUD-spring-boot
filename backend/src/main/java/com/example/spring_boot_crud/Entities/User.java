@@ -34,6 +34,7 @@ public class User {
 
     @NotNull(message = "Email is required")
     @Email(message = "Invalid email address")
+    //TO DO implementar validação de email própria
     @Column(nullable = false, unique = true)  // Garante que o email seja único
     private String email;
 }

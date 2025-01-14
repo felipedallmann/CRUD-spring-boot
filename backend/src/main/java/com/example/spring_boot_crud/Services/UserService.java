@@ -35,53 +35,48 @@ public class UserService {
 
     //read all the users
     public List<User> getAllUsers(){
-        return repository.findAll();
+        List<User> users = repository.findAll();
+        if (users.isEmpty()) {
+            throw new UserNotFoundException("No users found");
+        }
+        return users;
+
     }
 
     //read user searching by ID
     public User getUserById(Long id){
-        Optional <User> user = repository.findById(id);
-        if (user.isPresent()) {
-            return user.get();
-        }else{
-            throw new UserNotFoundException("User with ID: "+ id + " not found.");
-        }
+        return repository.findById(id)
+            .orElseThrow(() -> new UserNotFoundException("User with ID: "+ id + " not found."));
     }
 
     //read user searching by name
     public List<User> getUserByName(String name){
         List<User> users = repository.findByNameContainingIgnoreCase(name);
-        if (!users.isEmpty()) {
-            return users;
-        }else{
+        if (users.isEmpty()) {
             throw new UserNotFoundException("No user found with name: " + name);
         }
+        return users;
     }
 
     //update a user by his id
     public void updateUser(Long id, User updatedUser){
-        Optional<User> existingUser = repository.findById(id);
         //validate if user with specified id exists
-        if(existingUser.isEmpty()) {
-            throw new UserNotFoundException("User with ID: "+ id + " not found.");
-        }
-        
-        //Validates if the user modification violates the email constraint.
-        //If the email to be updated already exists, an exception will be thrown.
-        Optional <User> userWithSameEmail = repository.findByEmail(updatedUser.getEmail());
-        if(userWithSameEmail.isPresent() && userWithSameEmail.get().getId() != id){
-            throw new UserAlreadyExistsException("Email: "+ updatedUser.getEmail() + " already in use");
-        }
-        updatedUser.setId(id);
+        User existingUser = repository.findById(id)   
+            .orElseThrow(() -> new UserNotFoundException("User with ID: "+ id + " not found."));
+
+        repository.findByEmail(updatedUser.getEmail())
+            .ifPresent(userWithSameEmail -> {
+                if(userWithSameEmail.getId() != id){
+                    throw new UserAlreadyExistsException("Email: " + updatedUser.getEmail() + " already in use.");
+                }
+            });
+
+        updatedUser.setId(existingUser.getId());
         repository.save(updatedUser);
     }
     //delete user by ID
     public void deleteUser(Long id){
-        Optional<User> existingUser = repository.findById(id);
-
-        //Checks if a user with the specified ID exists
-        //If not, an exception will be thrown
-        if (existingUser.isEmpty()){
+        if(!repository.existsById(id)){
             throw new UserNotFoundException("User with ID: " +id + " not found.");
         }
         repository.deleteById(id);
