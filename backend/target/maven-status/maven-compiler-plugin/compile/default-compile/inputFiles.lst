@@ -5,5 +5,6 @@ C:\Users\terad\Documents\Projeto-CRUD\backend\src\main\java\com\example\spring_b
 C:\Users\terad\Documents\Projeto-CRUD\backend\src\main\java\com\example\spring_boot_crud\Exceptions\UserNotFoundException.java
 C:\Users\terad\Documents\Projeto-CRUD\backend\src\main\java\com\example\spring_boot_crud\Repository\UserRepository.java
 C:\Users\terad\Documents\Projeto-CRUD\backend\src\main\java\com\example\spring_boot_crud\Response\ApiResponse.java
+C:\Users\terad\Documents\Projeto-CRUD\backend\src\main\java\com\example\spring_boot_crud\Services\Impl\UserServiceImpl.java
 C:\Users\terad\Documents\Projeto-CRUD\backend\src\main\java\com\example\spring_boot_crud\Services\UserService.java
 C:\Users\terad\Documents\Projeto-CRUD\backend\src\main\java\com\example\spring_boot_crud\SpringBootCrudApplication.java
