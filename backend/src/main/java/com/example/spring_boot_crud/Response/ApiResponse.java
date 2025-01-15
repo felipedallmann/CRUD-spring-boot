@@ -1,4 +1,4 @@
-package com.example.spring_boot_crud.Response;
+package com.example.spring_boot_crud.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -1,16 +1,19 @@
-package com.example.spring_boot_crud.Services;
+package com.example.spring_boot_crud.services;
 
 
 import java.util.List;
-import com.example.spring_boot_crud.Entities.User;
+
+import com.example.spring_boot_crud.dtos.UserCreateDTO;
+import com.example.spring_boot_crud.dtos.UserResponseDTO;
+import com.example.spring_boot_crud.entities.User;
 
 
 public interface UserService {
-    void createUser(User user);
-    List<User> getAllUsers();
-    User getUserById(Long id);
-    List<User> getUserByName(String name);
-    void updateUser(Long id, User updatedUser);
+    void createUser(UserCreateDTO user);
+    void updateUser(Long id, UserCreateDTO updatedUser);
+    List<UserResponseDTO> getAllUsers();
+    UserResponseDTO getUserById(Long id);
+    List<UserResponseDTO> getUserByName(String name);
     void deleteUser(Long id);
 }
 

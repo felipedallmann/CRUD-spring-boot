@@ -1,4 +1,4 @@
-package com.example.spring_boot_crud.Entities;
+package com.example.spring_boot_crud.entities;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
@@ -10,16 +10,15 @@ import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
+import lombok.*;
 
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Getter
+@Setter
 @Table(name = "users")  // defines table in DB
 public class User {
     
