@@ -15,11 +15,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.spring_boot_crud.response.ApiResponse;
-import com.example.spring_boot_crud.services.UserService;
 import com.example.spring_boot_crud.dtos.UserCreateDTO;
 import com.example.spring_boot_crud.dtos.UserResponseDTO;
-import com.example.spring_boot_crud.entities.User;
+import com.example.spring_boot_crud.response.ApiResponse;
+import com.example.spring_boot_crud.services.UserService;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;

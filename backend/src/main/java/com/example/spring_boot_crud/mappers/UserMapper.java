@@ -1,7 +1,6 @@
 package com.example.spring_boot_crud.mappers;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
-import org.mapstruct.factory.Mappers;
 
 import com.example.spring_boot_crud.dtos.UserCreateDTO;
 import com.example.spring_boot_crud.dtos.UserResponseDTO;
