@@ -18,12 +18,24 @@ services:
     command: ["redis-server", "--appendonly", "yes"]
     restart: always
 
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    ports:
+      - "5672:5672" # Porta para comunicação (AMQP)
+      - "15672:15672" # Porta para o dashboard
+    environment:
+      RABBITMQ_DEFAULT_USER: admin
+      RABBITMQ_DEFAULT_PASS: admin123
+    restart: always
+
+
   postgres:
     image: postgres:15
     container_name: postgres_container
     environment:
-      POSTGRES_USER: user
-      POSTGRES_PASSWORD: password
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
     ports:
       - "5432:5432"
     volumes:

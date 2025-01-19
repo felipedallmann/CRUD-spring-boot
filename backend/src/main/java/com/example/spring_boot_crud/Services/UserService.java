@@ -5,7 +5,6 @@ import java.util.List;
 
 import com.example.spring_boot_crud.dtos.UserCreateDTO;
 import com.example.spring_boot_crud.dtos.UserResponseDTO;
-import com.example.spring_boot_crud.entities.User;
 
 
 public interface UserService {
