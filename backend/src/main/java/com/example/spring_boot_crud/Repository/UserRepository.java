@@ -9,9 +9,12 @@ import com.example.spring_boot_crud.entities.User;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
+    List<User> findAllByDeletedFalse();
+    Optional<User> findByIdAndDeletedFalse(Long id);
+    
     // Search by name
-    List<User> findByNameContainingIgnoreCase(String name);
+    List<User> findByNameContainingIgnoreCaseAndDeletedFalse(String name);
 
     // Search by e-mail
-    Optional<User> findByEmail(String email);
+    Optional<User> findByEmailAndDeletedFalse(String email);
 }

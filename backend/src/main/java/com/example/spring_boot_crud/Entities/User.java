@@ -10,7 +10,11 @@ import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 
 @Data
@@ -36,4 +40,7 @@ public class User {
     //TO DO implementar validação de email própria
     @Column(nullable = false, unique = true)  // Garante que o email seja único
     private String email;
+
+    @Column(nullable=false)
+    private boolean deleted = false;
 }

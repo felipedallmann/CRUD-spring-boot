@@ -24,4 +24,12 @@
         </createTable>
     </changeSet>
 
+    <!-- ChangeSet para adicionar a coluna deleted -->
+    <changeSet id="2" author="dev">
+        <addColumn tableName="users">
+            <column name="deleted" type="boolean" defaultValue="false">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+    </changeSet>
 </databaseChangeLog>
