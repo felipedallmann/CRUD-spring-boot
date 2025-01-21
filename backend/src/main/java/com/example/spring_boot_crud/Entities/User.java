@@ -1,13 +1,16 @@
 package com.example.spring_boot_crud.entities;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
+import com.example.spring_boot_crud.validation.ValidEmail;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EntityListeners;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -24,6 +27,8 @@ import lombok.Setter;
 @Getter
 @Setter
 @Table(name = "users")  // defines table in DB
+@EntityListeners(AuditingEntityListener.class) // Habilita auditoria para esta entidade
+
 public class User {
     
     @JsonIgnore
@@ -36,8 +41,7 @@ public class User {
     private String name;
 
     @NotNull(message = "Email is required")
-    @Email(message = "Invalid email address")
-    //TO DO implementar validação de email própria
+    @ValidEmail(message = "Invalid email address")
     @Column(nullable = false, unique = true)  // Garante que o email seja único
     private String email;
 

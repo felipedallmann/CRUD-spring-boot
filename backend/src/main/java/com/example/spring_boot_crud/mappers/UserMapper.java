@@ -11,6 +11,7 @@ public interface UserMapper {
 
     //DTO to entity
     @Mapping(target = "id", ignore = true)  // Ignora o mapeamento do id
+    @Mapping(target = "deleted", ignore = true)
     User toEntity(UserCreateDTO dto);
 
     //Entity to DTO

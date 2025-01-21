@@ -1,3 +1,4 @@
+C:\Users\terad\Documents\Projeto-CRUD\backend\src\main\java\com\example\spring_boot_crud\config\RabbitMQConfig.java
 C:\Users\terad\Documents\Projeto-CRUD\backend\src\main\java\com\example\spring_boot_crud\config\RedisSessionConfig.java
 C:\Users\terad\Documents\Projeto-CRUD\backend\src\main\java\com\example\spring_boot_crud\controller\SessionController.java
 C:\Users\terad\Documents\Projeto-CRUD\backend\src\main\java\com\example\spring_boot_crud\controller\UserController.java
@@ -10,6 +11,12 @@ C:\Users\terad\Documents\Projeto-CRUD\backend\src\main\java\com\example\spring_b
 C:\Users\terad\Documents\Projeto-CRUD\backend\src\main\java\com\example\spring_boot_crud\mappers\UserMapper.java
 C:\Users\terad\Documents\Projeto-CRUD\backend\src\main\java\com\example\spring_boot_crud\repository\UserRepository.java
 C:\Users\terad\Documents\Projeto-CRUD\backend\src\main\java\com\example\spring_boot_crud\response\ApiResponse.java
+C:\Users\terad\Documents\Projeto-CRUD\backend\src\main\java\com\example\spring_boot_crud\services\impl\UserNotificationConsumerImpl.java
+C:\Users\terad\Documents\Projeto-CRUD\backend\src\main\java\com\example\spring_boot_crud\services\impl\UserNotificationProducerImpl.java
 C:\Users\terad\Documents\Projeto-CRUD\backend\src\main\java\com\example\spring_boot_crud\services\impl\UserServiceImpl.java
+C:\Users\terad\Documents\Projeto-CRUD\backend\src\main\java\com\example\spring_boot_crud\services\UserNotificationConsumer.java
+C:\Users\terad\Documents\Projeto-CRUD\backend\src\main\java\com\example\spring_boot_crud\services\UserNotificationProducer.java
 C:\Users\terad\Documents\Projeto-CRUD\backend\src\main\java\com\example\spring_boot_crud\services\UserService.java
 C:\Users\terad\Documents\Projeto-CRUD\backend\src\main\java\com\example\spring_boot_crud\SpringBootCrudApplication.java
+C:\Users\terad\Documents\Projeto-CRUD\backend\src\main\java\com\example\spring_boot_crud\validation\EmailValidator.java
+C:\Users\terad\Documents\Projeto-CRUD\backend\src\main\java\com\example\spring_boot_crud\validation\ValidEmail.java

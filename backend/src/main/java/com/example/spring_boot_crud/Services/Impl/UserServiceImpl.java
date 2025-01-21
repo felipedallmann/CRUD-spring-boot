@@ -81,20 +81,22 @@ public class UserServiceImpl implements UserService {
     public void updateUser(Long id, UserCreateDTO updatedUserDTO){
 
         //validate if user with specified id exists
-        User existingUser = repository.findById(id)   
+        User existingUser = repository.findByIdAndDeletedFalse(id)   
             .orElseThrow(() -> new UserNotFoundException("User with ID: "+ id + " not found."));
 
-        User updatedUser = mapper.toEntity(updatedUserDTO);
-        repository.findByEmailAndDeletedFalse(updatedUser.getEmail())
+        // existingUser = mapper.toEntity(updatedUserDTO);
+        repository.findByEmailAndDeletedFalse(updatedUserDTO.getEmail())
             .ifPresent(userWithSameEmail -> {
                 if(userWithSameEmail.getId() != id){
-                    throw new UserAlreadyExistsException("Email: " + updatedUser.getEmail() + " already in use.");
+                    throw new UserAlreadyExistsException("Email: " + updatedUserDTO.getEmail() + " already in use.");
                 }
             });
 
-        updatedUser.setId(existingUser.getId());
-        notificationProducer.sendNotification("User with id: " + updatedUser.getId() + " updated");
-        repository.save(updatedUser);
+        existingUser.setName(updatedUserDTO.getName());
+        existingUser.setEmail(updatedUserDTO.getEmail());
+
+        notificationProducer.sendNotification("User with id: " + existingUser.getId() + " updated");
+        repository.save(existingUser);
     }
     //delete user by ID
     @Override
