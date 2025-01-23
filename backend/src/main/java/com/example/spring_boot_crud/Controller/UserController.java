@@ -91,5 +91,12 @@ public class UserController {
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
     
+    @Operation(summary = "Listar usuários deletados")
+    @GetMapping("/deleted")
+    public ResponseEntity<ApiResponse<List<UserResponseDTO>>> getDeletedUser() {
+        List<UserResponseDTO> deletedeUsers = service.getDeletedUser();
+        ApiResponse<List<UserResponseDTO>> response = ApiResponse.success(deletedeUsers, HttpStatus.OK.value());
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
     
 }

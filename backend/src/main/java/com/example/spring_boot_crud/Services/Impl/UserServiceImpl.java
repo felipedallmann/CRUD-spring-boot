@@ -110,4 +110,14 @@ public class UserServiceImpl implements UserService {
         repository.save(user);
         notificationProducer.sendNotification("User deleted with ID: " + id);
     }  
+
+    @Override
+    public List<UserResponseDTO> getDeletedUser(){
+        List<User> deletedUsers = repository.findByDeletedTrue();
+        if(deletedUsers.isEmpty()){
+            throw new UserNotFoundException("No user deleted");
+        }
+        return deletedUsers.stream()
+            .map(mapper::toResponseDTO).collect(Collectors.toList());
+        }
 }
